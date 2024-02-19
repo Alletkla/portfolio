@@ -49,7 +49,7 @@ export default function App() {
             <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }} className={`${styles.blue} ${styles.description}`}>{technology}</Card>
-            <a className='btn btn-primary' style={{ display: 'flex', flexDirection: "column" }} href={link}><span>Zur Demo</span>{note}</a>
+            <a className='btn btn-primary' style={{ display: 'flex', flexDirection: "column" }} href={link} target="_blank"><span>Zur Demo</span>{note}</a>
           </div>
         </ParallaxLayer>}
       </React.Fragment>)
