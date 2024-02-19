@@ -109,13 +109,14 @@ export default function App() {
         <ParallaxLayer offset={0} speed={0.5} style={{ ...alignCenter, justifyContent: 'center' }}>
           <div>
             <h1 className={styles.scrollText}>Portfolio M. Förster</h1>
-            <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1.5rem" }}><div> ⏬ Scroll Down ⏬</div></div>
+            <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1.5rem" , marginBottom: "2rem"}}>- Tech and Education Combined -</div>
+            <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1rem" }}><div> ⏬ Scroll Down ⏬</div></div>
           </div>
         </ParallaxLayer>
         {bewertungstool}
         {logicSim}
         {pythonSchool}
-        <ParallaxLayer sticky={{ start: layerCounter, end: layerCounter + 1 }} style={{ ...alignCenter }}>
+        <ParallaxLayer offset={layerCounter} speed={0.5} style={{ ...alignCenter }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
             <h2>Kontakt</h2>
             <p>Maximilian Förster</p>
