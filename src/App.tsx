@@ -1,9 +1,13 @@
 import React from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import styles from './styles.module.css'
-import bewertungstoolURL from "../public/alletkla-bewertungstool.netlify.app_.png"
-import logicSimURL from "../public/alletkla-logic-sim.netlify.app_.png"
-import pythonSchoolURL from "../public/alletkla-python-school.netlify.app_.png"
+import bewertungstoolURL1 from "../public/alletkla-bewertungstool.netlify.app_.png"
+import bewertungstoolURL2 from "../public/alletkla-bewertungstool.netlify.app_2.png"
+import bewertungstoolURL3 from "../public/alletkla-bewertungstool.netlify.app_3.png"
+import logicSimURL1 from "../public/alletkla-logic-sim.netlify.app_.png"
+import logicSimURL2 from "../public/alletkla-logic-sim.netlify.app_2.png"
+import pythonSchoolURL1 from "../public/alletkla-python-school.netlify.app_.png"
+import pythonSchoolURL2 from "../public/alletkla-python-school.netlify.app_2.png"
 import githubURL from "../public/github-mark/github-mark.png"
 import Title from './components/Title.tsx'
 import Card from './components/Card.tsx'
@@ -14,15 +18,112 @@ export default function App() {
 
   let layerCounter = 1
 
-  const renderParallaxLayers = (img: string, title: JSX.Element, description: JSX.Element, technology: JSX.Element, note: JSX.Element, link?: string) => {
+  // const renderParallaxLayers = (img: string, title: JSX.Element, description: JSX.Element, technology: JSX.Element, note: JSX.Element, link?: string) => {
+  //   const start = layerCounter
+  //   const end = link ? start + 2.5 : start + 1.5
+  //   layerCounter += (link ? 2.5 : 1.5) + 1
+  //   return (
+  //     <React.Fragment>
+  //       <ParallaxLayer sticky={{ start: start, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+  //         <div className={`${styles.image_card} ${styles.sticky}`}>
+  //           <img className={styles.image} src={img} />
+  //         </div>
+  //       </ParallaxLayer>
+
+  //       <ParallaxLayer sticky={{ start: start, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+  //         <div className={`${styles.parallax}`}>
+  //           <Title><h2>{title}</h2></Title>
+  //         </div>
+  //       </ParallaxLayer>
+  //       <ParallaxLayer sticky={{ start: start + 0.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+  //         <div className={`${styles.parallax}`} >
+  //           <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+  //           <Card className={`${styles.blue} ${styles.description}`}>{description}</Card>
+  //         </div>
+  //       </ParallaxLayer>
+  //       <ParallaxLayer sticky={{ start: start + 1, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+  //         <div className={`${styles.parallax}`} >
+  //           <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+  //           <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
+  //           <Card className={`${styles.blue} ${styles.description}`}>{technology}</Card>
+  //         </div>
+  //       </ParallaxLayer>
+  //       {link && <ParallaxLayer sticky={{ start: start + 1.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+  //         <div className={`${styles.parallax}`} >
+  //           <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+  //           <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
+  //           <Card style={{ visibility: 'hidden', marginBottom: '5%' }} className={`${styles.blue} ${styles.description}`}>{technology}</Card>
+  //           <a className='btn btn-primary' style={{ display: 'flex', flexDirection: "column" }} href={link} target="_blank"><span>Zur Demo</span>{note}</a>
+  //         </div>
+  //       </ParallaxLayer>}
+  //     </React.Fragment>)
+  // }
+
+  const renderParallaxLayers2Images = (img1: string, img2: string, title: JSX.Element, description: JSX.Element, technology: JSX.Element, note: JSX.Element, link?: string) => {
     const start = layerCounter
     const end = link ? start + 2.5 : start + 1.5
     layerCounter += (link ? 2.5 : 1.5) + 1
     return (
       <React.Fragment>
-        <ParallaxLayer sticky={{ start: start, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+        <ParallaxLayer sticky={{ start: start, end: start +0.75 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
-            <img className={styles.image} src={img} />
+            <img className={styles.image} src={img1} />
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer sticky={{ start: start+1.5, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+          <div className={`${styles.image_card} ${styles.sticky}`}>
+            <img className={styles.image} src={img2} />
+          </div>
+        </ParallaxLayer>
+
+        <ParallaxLayer sticky={{ start: start, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div className={`${styles.parallax}`}>
+            <Title><h2>{title}</h2></Title>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer sticky={{ start: start + 0.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div className={`${styles.parallax}`} >
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Card className={`${styles.blue} ${styles.description}`}>{description}</Card>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer sticky={{ start: start + 1, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div className={`${styles.parallax}`} >
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
+            <Card className={`${styles.blue} ${styles.description}`}>{technology}</Card>
+          </div>
+        </ParallaxLayer>
+        {link && <ParallaxLayer sticky={{ start: start + 1.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div className={`${styles.parallax}`} >
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
+            <Card style={{ visibility: 'hidden', marginBottom: '5%' }} className={`${styles.blue} ${styles.description}`}>{technology}</Card>
+            <a className='btn btn-primary' style={{ display: 'flex', flexDirection: "column" }} href={link} target="_blank"><span>Zur Demo</span>{note}</a>
+          </div>
+        </ParallaxLayer>}
+      </React.Fragment>)
+  }
+
+  const renderParallaxLayers3Images = (img1: string, img2: string, img3: string, title: JSX.Element, description: JSX.Element, technology: JSX.Element, note: JSX.Element, link?: string) => {
+    const start = layerCounter
+    const end = link ? start + 2.5 : start + 1.5
+    layerCounter += (link ? 2.5 : 1.5) + 1
+    return (
+      <React.Fragment>
+        <ParallaxLayer sticky={{ start: start, end: start +0.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+          <div className={`${styles.image_card} ${styles.sticky}`}>
+            <img className={styles.image} src={img1} />
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer sticky={{ start: start+1, end: start +1.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+          <div className={`${styles.image_card} ${styles.sticky}`}>
+            <img className={styles.image} src={img2} />
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer sticky={{ start: start+2, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+          <div className={`${styles.image_card} ${styles.sticky}`}>
+            <img className={styles.image} src={img3} />
           </div>
         </ParallaxLayer>
 
@@ -67,7 +168,7 @@ export default function App() {
     <li>+ Bootsrap</li>
   </ul>
 
-  const bewertungstool = renderParallaxLayers(bewertungstoolURL, feedFixTitle, feedFixDescription, feedFixTechnology, <div className='note'>{"Datenbank-Server Bootzeit <=2 Minuten"}</div>, "https://alletkla-bewertungstool.netlify.app/")
+  const bewertungstool = renderParallaxLayers3Images(bewertungstoolURL1, bewertungstoolURL2, bewertungstoolURL3, feedFixTitle, feedFixDescription, feedFixTechnology, <div className='note'>{"Datenbank-Server Bootzeit <=2 Minuten"}</div>, "https://alletkla-bewertungstool.netlify.app/")
 
   const logicSimTitle = <span>LogicSim</span>
   const logicSimDescription = <ul>
@@ -83,7 +184,7 @@ export default function App() {
     <li>react-diagrams</li>
   </ul>
 
-  const logicSim = renderParallaxLayers(logicSimURL, logicSimTitle, logicSimDescription, logicSimTechnology, <React.Fragment />, "https://alletkla-logic-sim.netlify.app/")
+  const logicSim = renderParallaxLayers2Images(logicSimURL1, logicSimURL2, logicSimTitle, logicSimDescription, logicSimTechnology, <React.Fragment />, "https://alletkla-logic-sim.netlify.app/")
 
   const pythonSchoolTitle = <span>PythonSchool</span>
   const pythonSchoolDescription = <ul>
@@ -99,7 +200,7 @@ export default function App() {
     <li>skulpt</li>
   </ul>
 
-  const pythonSchool = renderParallaxLayers(pythonSchoolURL, pythonSchoolTitle, pythonSchoolDescription, pythonSchoolTechnology, <React.Fragment />, "https://alletkla-python-school.netlify.app/")
+  const pythonSchool = renderParallaxLayers2Images(pythonSchoolURL1, pythonSchoolURL2, pythonSchoolTitle, pythonSchoolDescription, pythonSchoolTechnology, <React.Fragment />, "https://alletkla-python-school.netlify.app/")
 
   return (
     <div>
