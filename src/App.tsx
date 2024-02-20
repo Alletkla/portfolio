@@ -1,6 +1,9 @@
 import React from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import styles from './styles.module.css'
+import sql2RegExURL1 from "../public/sql2regex.onrender.com__1.png"
+import sql2RegExURL2 from "../public/sql2regex.onrender.com__2.png"
+import sql2RegExURL3 from "../public/sql2regex.onrender.com__3.png"
 import bewertungstoolURL1 from "../public/alletkla-bewertungstool.netlify.app_.png"
 import bewertungstoolURL2 from "../public/alletkla-bewertungstool.netlify.app_2.png"
 import bewertungstoolURL3 from "../public/alletkla-bewertungstool.netlify.app_3.png"
@@ -156,6 +159,23 @@ export default function App() {
       </React.Fragment>)
   }
 
+  const sql2RegExTitle = <span>Sql2RegEx</span>
+  const sql2RegExDescription = <ul>
+    <li>Konverter in EN/DE</li>
+    <li>Input: 1 SQL Musterlösung</li>
+    <li>Output: regulärer Ausdruck möglicher Alternativen</li>
+    <li>99% Trefferquote</li>
+    <li>Unterstütz werden: SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE</li>
+  </ul>
+  const sql2RegExTechnology = <ul>
+    <li>Java</li>
+    <li>+ Spring</li>
+    <li>JavaScript</li>
+    <li>Bootstrap</li>
+  </ul>
+
+  const sql2RegEx = renderParallaxLayers3Images(sql2RegExURL1, sql2RegExURL2, sql2RegExURL3, sql2RegExTitle, sql2RegExDescription, sql2RegExTechnology, <div className='note'>{"Bootzeit <=2 Minuten"}</div>, "https://sql2regex.onrender.com/")
+
   const feedFixTitle = <span>FeedFix</span>
   const feedFixDescription = <ul>
     <li>einheitlichen Bewertung von mündlichen Leistungen anhand von Kompetenzmatrizen</li>
@@ -202,6 +222,8 @@ export default function App() {
 
   const pythonSchool = renderParallaxLayers2Images(pythonSchoolURL1, pythonSchoolURL2, pythonSchoolTitle, pythonSchoolDescription, pythonSchoolTechnology, <React.Fragment />, "https://alletkla-python-school.netlify.app/")
 
+
+
   return (
     <div>
       <div className={styles.background} />
@@ -214,6 +236,7 @@ export default function App() {
             <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1rem" }}><div> ⏬ Scroll Down ⏬</div></div>
           </div>
         </ParallaxLayer>
+        {sql2RegEx}
         {bewertungstool}
         {logicSim}
         {pythonSchool}
