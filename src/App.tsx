@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import styles from './styles.module.css'
+import javaLogoUrl from "../public/logo_java.png"
+import jsLogoUrl from "../public/logo_javascript.png"
+import tsLogoUrl from "../public/logo_typescript.png"
+import reactLogoUrl from "../public/logo_react.png"
+import springBootLogoUrl from "../public/logo_springboot.png"
+import bootstrapLogoUrl from "../public/logo_bootstrap.png"
 import sql2RegExURL1 from "../public/sql2regex.onrender.com__1.png"
 import sql2RegExURL2 from "../public/sql2regex.onrender.com__2.png"
 import sql2RegExURL3 from "../public/sql2regex.onrender.com__3.png"
@@ -18,8 +24,39 @@ import './App.css'
 
 export default function App() {
   const alignCenter = { display: 'flex', alignItems: 'center' }
+  const parallaxRef: any = useRef(null)
+
+  const [rotate, setRotate] = useState(0)
 
   let layerCounter = 1
+
+  useEffect(() => {
+    const handleScroll = (e: any) => {
+      const height = parallaxRef.current.space
+      const scrollablePages = layerCounter - 1 // because you can't scroll past the last page 
+      const scrollHeight = height * scrollablePages
+
+      const scrollTop = e.target.scrollTop
+      const percentScrolled = scrollTop / scrollHeight
+      const currentPage = Math.floor(percentScrolled * scrollablePages)
+      const currentPageScrollTop = scrollTop - (height * (currentPage))
+      const currentPagePercent = currentPageScrollTop / height
+
+      // console.log("scrollTop", scrollTop,"scrollablePages", scrollablePages, "percentScrolled", percentScrolled, "currentPage", currentPage, "currentPageScrollTop", currentPageScrollTop, "currentPagePercent", currentPagePercent)
+
+      // because the ParallaxLayer below has an `offset` of `0`
+      if (currentPage === 0) {
+        setRotate(currentPagePercent)
+      }
+    }
+
+    const container = parallaxRef.current.container.current
+    container.addEventListener('scroll', handleScroll)
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   // const renderParallaxLayers = (img: string, title: JSX.Element, description: JSX.Element, technology: JSX.Element, note: JSX.Element, link?: string) => {
   //   const start = layerCounter
@@ -68,12 +105,12 @@ export default function App() {
     layerCounter += (link ? 2.5 : 1.5) + 1
     return (
       <React.Fragment>
-        <ParallaxLayer sticky={{ start: start, end: start +0.75 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+        <ParallaxLayer sticky={{ start: start, end: start + 0.75 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
             <img className={styles.image} src={img1} />
           </div>
         </ParallaxLayer>
-        <ParallaxLayer sticky={{ start: start+1.5, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+        <ParallaxLayer sticky={{ start: start + 1.5, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
             <img className={styles.image} src={img2} />
           </div>
@@ -114,17 +151,17 @@ export default function App() {
     layerCounter += (link ? 2.5 : 1.5) + 1
     return (
       <React.Fragment>
-        <ParallaxLayer sticky={{ start: start, end: start +0.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+        <ParallaxLayer sticky={{ start: start, end: start + 0.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
             <img className={styles.image} src={img1} />
           </div>
         </ParallaxLayer>
-        <ParallaxLayer sticky={{ start: start+1, end: start +1.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+        <ParallaxLayer sticky={{ start: start + 1, end: start + 1.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
             <img className={styles.image} src={img2} />
           </div>
         </ParallaxLayer>
-        <ParallaxLayer sticky={{ start: start+2, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
+        <ParallaxLayer sticky={{ start: start + 2, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
           <div className={`${styles.image_card} ${styles.sticky}`}>
             <img className={styles.image} src={img3} />
           </div>
@@ -228,11 +265,50 @@ export default function App() {
     <div>
       <div className={styles.background} />
 
-      <Parallax pages={layerCounter + 1} style={{ top: '0px' }}>
+      <Parallax pages={layerCounter + 1} style={{ top: '0px' }} ref={parallaxRef}>
+        <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', opacity: (1 - rotate * 5) }}>
+          <div className='logo' style={{ transform: `translate(${-50 + rotate * 1100}px, -175px) rotate(${10 - rotate * 80}deg)` }}>
+            <img className={styles.image} src={reactLogoUrl}></img>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', opacity: (1 - rotate * 5) }}>
+          <div className='logo' style={{ transform: `translate(${-10 + rotate * 1000}px) rotate(${2 - rotate * 20}deg)` }}>
+            <img className={styles.image} src={jsLogoUrl}></img>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', opacity: (1 - rotate * 5) }}>
+          <div className='logo' style={{ transform: `translate(${-40 + rotate * 1000}px, 180px) rotate(${-8 + rotate * 70}deg)` }}>
+            <img className={styles.image} src={tsLogoUrl}></img>
+          </div>
+        </ParallaxLayer>
+
+
+        {/* <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', transform: `translate(${- rotate * 90 + 'vw'}) rotate(${+rotate * 40 + 180}deg)`, opacity: (1 - rotate * 5) }}>
+          <div style={{ width: "100px", height: "100px", backgroundColor: 'black' }}>
+            <img className={styles.image} style={{ transform: "rotate(180deg)" }} src={javaLogoUrl}></img>
+          </div>
+        </ParallaxLayer> */}
+
+        <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-start', opacity: (1 - rotate * 5) }}>
+          <div className='logo' style={{ transform: `translate(${+50 - rotate * 1100}px, -175px) rotate(${10 - rotate * 80}deg)` }}>
+            <img className={styles.image} src={springBootLogoUrl}></img>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-start', opacity: (1 - rotate * 5) }}>
+          <div className='logo' style={{ transform: `translate(${+10 - rotate * 1000}px) rotate(${2 - rotate * 20}deg)` }}>
+            <img className={styles.image} src={javaLogoUrl}></img>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-start', opacity: (1 - rotate * 5) }}>
+          <div className='logo' style={{ transform: `translate(${+40 - rotate * 1000}px, 180px) rotate(${-8 + rotate * 70}deg)` }}>
+            <img className={styles.image} src={bootstrapLogoUrl}></img>
+          </div>
+        </ParallaxLayer>
+
         <ParallaxLayer offset={0} speed={0.5} style={{ ...alignCenter, justifyContent: 'center' }}>
           <div>
             <h1 className={styles.scrollText}>Portfolio M. Förster</h1>
-            <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1.5rem" , marginBottom: "2rem"}}>- Tech and Education Combined -</div>
+            <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1.5rem", marginBottom: "2rem" }}>- Tech and Education Combined -</div>
             <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1rem" }}><div> ⏬ Scroll Down ⏬</div></div>
           </div>
         </ParallaxLayer>
@@ -245,7 +321,7 @@ export default function App() {
             <h2>Kontakt</h2>
             <p>Maximilian Förster</p>
             <p>maximilianfoerter@t-online.de</p>
-            <a href="https://github.com/Alletkla"><img style={{width: "2rem"}} src={githubURL}/></a>
+            <a href="https://github.com/Alletkla"><img style={{ width: "2rem" }} src={githubURL} /></a>
           </div>
         </ParallaxLayer>
       </Parallax>
