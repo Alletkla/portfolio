@@ -106,8 +106,11 @@ export default function App() {
     return (
       <React.Fragment>
         <ParallaxLayer sticky={{ start: start, end: start + 0.75 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
-          <div className={`${styles.image_card} ${styles.sticky}`}>
-            <img className={styles.image} src={img1} />
+          <div>
+            <div className={`${styles.image_card} ${styles.sticky}`}>
+              <img className={styles.image} src={img1} />
+            </div>
+            <div className={styles.mobile_image_spacer}></div>
           </div>
         </ParallaxLayer>
         <ParallaxLayer sticky={{ start: start + 1.5, end: end }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
@@ -123,20 +126,20 @@ export default function App() {
         </ParallaxLayer>
         <ParallaxLayer sticky={{ start: start + 0.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className={`${styles.parallax}`} >
-            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} ><h2>{title}</h2></Title>
             <Card className={`${styles.blue} ${styles.description}`}>{description}</Card>
           </div>
         </ParallaxLayer>
         <ParallaxLayer sticky={{ start: start + 1, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className={`${styles.parallax}`} >
-            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} ><h2>{title}</h2></Title>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
             <Card className={`${styles.blue} ${styles.description}`}>{technology}</Card>
           </div>
         </ParallaxLayer>
         {link && <ParallaxLayer sticky={{ start: start + 1.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className={`${styles.parallax}`} >
-            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} ><h2>{title}</h2></Title>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }} className={`${styles.blue} ${styles.description}`}>{technology}</Card>
             <a className='btn btn-primary' style={{ display: 'flex', flexDirection: "column" }} href={link} target="_blank"><span>Zur Demo</span>{note}</a>
@@ -152,8 +155,11 @@ export default function App() {
     return (
       <React.Fragment>
         <ParallaxLayer sticky={{ start: start, end: start + 0.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
-          <div className={`${styles.image_card} ${styles.sticky}`}>
-            <img className={styles.image} src={img1} />
+          <div>
+            <div className={`${styles.image_card} ${styles.sticky}`}>
+              <img className={styles.image} src={img1} />
+            </div>
+            <div className={styles.mobile_image_spacer}></div>
           </div>
         </ParallaxLayer>
         <ParallaxLayer sticky={{ start: start + 1, end: start + 1.25 }} style={{ ...alignCenter, justifyContent: 'flex-start' }}>
@@ -174,20 +180,20 @@ export default function App() {
         </ParallaxLayer>
         <ParallaxLayer sticky={{ start: start + 0.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className={`${styles.parallax}`} >
-            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} ><h2>{title}</h2></Title>
             <Card className={`${styles.blue} ${styles.description}`}>{description}</Card>
           </div>
         </ParallaxLayer>
         <ParallaxLayer sticky={{ start: start + 1, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className={`${styles.parallax}`} >
-            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} ><h2>{title}</h2></Title>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
             <Card className={`${styles.blue} ${styles.description}`}>{technology}</Card>
           </div>
         </ParallaxLayer>
         {link && <ParallaxLayer sticky={{ start: start + 1.5, end: end }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div className={`${styles.parallax}`} >
-            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} >{title}</Title>
+            <Title style={{ visibility: 'hidden', marginBottom: '5%' }} ><h2>{title}</h2></Title>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }}>{description}</Card>
             <Card style={{ visibility: 'hidden', marginBottom: '5%' }} className={`${styles.blue} ${styles.description}`}>{technology}</Card>
             <a className='btn btn-primary' style={{ display: 'flex', flexDirection: "column" }} href={link} target="_blank"><span>Zur Demo</span>{note}</a>
@@ -198,11 +204,10 @@ export default function App() {
 
   const sql2RegExTitle = <span>Sql2RegEx</span>
   const sql2RegExDescription = <ul>
-    <li>Konverter in EN/DE</li>
     <li>Input: 1 SQL Musterlösung</li>
-    <li>Output: regulärer Ausdruck möglicher Alternativen</li>
+    <li>Output: RegEx möglicher Alternativen</li>
     <li>99% Trefferquote</li>
-    <li>Unterstütz werden: SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE</li>
+    <li>DE/EN</li>
   </ul>
   const sql2RegExTechnology = <ul>
     <li>Java</li>
@@ -267,46 +272,39 @@ export default function App() {
 
       <Parallax pages={layerCounter + 1} style={{ top: '0px' }} ref={parallaxRef}>
         <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', opacity: (1 - rotate * 5) }}>
-          <div className='logo' style={{ transform: `translate(${-50 + rotate * 1100}px, -175px) rotate(${10 - rotate * 80}deg)` }}>
-            <img className={styles.image} src={reactLogoUrl}></img>
+          <div className='logo logo-r' style={{ transform: `translate(${-50 + rotate * 1100}px, -175px) rotate(${10 - rotate * 80}deg)` }}>
+            <img className={`${styles.image} ${styles.logo}`} src={reactLogoUrl}></img>
           </div>
         </ParallaxLayer>
         <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', opacity: (1 - rotate * 5) }}>
-          <div className='logo' style={{ transform: `translate(${-10 + rotate * 1000}px) rotate(${2 - rotate * 20}deg)` }}>
-            <img className={styles.image} src={jsLogoUrl}></img>
+          <div className='logo logo-r' style={{ transform: `translate(${-10 + rotate * 1000}px) rotate(${2 - rotate * 20}deg)` }}>
+            <img className={`${styles.image} ${styles.logo}`} src={jsLogoUrl}></img>
           </div>
         </ParallaxLayer>
         <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', opacity: (1 - rotate * 5) }}>
-          <div className='logo' style={{ transform: `translate(${-40 + rotate * 1000}px, 180px) rotate(${-8 + rotate * 70}deg)` }}>
-            <img className={styles.image} src={tsLogoUrl}></img>
+          <div className='logo logo-r' style={{ transform: `translate(${-40 + rotate * 1000}px, 180px) rotate(${-8 + rotate * 70}deg)` }}>
+            <img className={`${styles.image} ${styles.logo}`} src={tsLogoUrl}></img>
           </div>
         </ParallaxLayer>
 
-
-        {/* <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-end', transform: `translate(${- rotate * 90 + 'vw'}) rotate(${+rotate * 40 + 180}deg)`, opacity: (1 - rotate * 5) }}>
-          <div style={{ width: "100px", height: "100px", backgroundColor: 'black' }}>
-            <img className={styles.image} style={{ transform: "rotate(180deg)" }} src={javaLogoUrl}></img>
-          </div>
-        </ParallaxLayer> */}
-
         <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-start', opacity: (1 - rotate * 5) }}>
-          <div className='logo' style={{ transform: `translate(${+50 - rotate * 1100}px, -175px) rotate(${10 - rotate * 80}deg)` }}>
-            <img className={styles.image} src={springBootLogoUrl}></img>
+          <div className='logo logo-l' style={{ transform: `translate(${+50 - rotate * 1100}px, -175px) rotate(${10 - rotate * 80}deg)` }}>
+            <img className={`${styles.image} ${styles.logo}`} src={springBootLogoUrl}></img>
           </div>
         </ParallaxLayer>
         <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-start', opacity: (1 - rotate * 5) }}>
-          <div className='logo' style={{ transform: `translate(${+10 - rotate * 1000}px) rotate(${2 - rotate * 20}deg)` }}>
-            <img className={styles.image} src={javaLogoUrl}></img>
+          <div className='logo logo-l' style={{ transform: `translate(${+10 - rotate * 1000}px) rotate(${2 - rotate * 20}deg)` }}>
+            <img className={`${styles.image} ${styles.logo}`} src={javaLogoUrl}></img>
           </div>
         </ParallaxLayer>
         <ParallaxLayer offset={0} speed={(0.5)} style={{ ...alignCenter, justifyContent: 'flex-start', opacity: (1 - rotate * 5) }}>
-          <div className='logo' style={{ transform: `translate(${+40 - rotate * 1000}px, 180px) rotate(${-8 + rotate * 70}deg)` }}>
-            <img className={styles.image} src={bootstrapLogoUrl}></img>
+          <div className='logo logo-l' style={{ transform: `translate(${+40 - rotate * 1000}px, 180px) rotate(${-8 + rotate * 70}deg)` }}>
+            <img className={`${styles.image} ${styles.logo}`} src={bootstrapLogoUrl}></img>
           </div>
         </ParallaxLayer>
 
         <ParallaxLayer offset={0} speed={0.5} style={{ ...alignCenter, justifyContent: 'center' }}>
-          <div>
+          <div style={{textAlign: "center"}}>
             <h1 className={styles.scrollText}>Portfolio M. Förster</h1>
             <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1.5rem", marginBottom: "2rem" }}>- Tech and Education Combined -</div>
             <div style={{ ...alignCenter, justifyContent: 'center', fontSize: "1rem" }}><div> ⏬ Scroll Down ⏬</div></div>
@@ -317,7 +315,7 @@ export default function App() {
         {logicSim}
         {pythonSchool}
         <ParallaxLayer offset={layerCounter} speed={0.5} style={{ ...alignCenter }}>
-          <div className={`${styles.image_card} ${styles.sticky}`}>
+          <div className={`${styles.image_card} ${styles.sticky} ${styles.visible_m}`}>
             <h2>Kontakt</h2>
             <p>Maximilian Förster</p>
             <p>maximilianfoerter@t-online.de</p>

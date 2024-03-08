@@ -34,3 +34,13 @@ h2 {
   width: 120px;
   height: 120px;
 }
+
+@media (max-width: 750px) {
+  .logo-r {
+    text-align: right;
+  }
+
+  .logo-l {
+    text-align: left;
+  }
+}
